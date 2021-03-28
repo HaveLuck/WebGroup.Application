@@ -34,7 +34,7 @@ namespace WebGroup.Application.Controllers
         //lưu ảnh lên server
         [Route("api/UploadFile")]
         [HttpPost]
-        public string UploadFile()
+        public IHttpActionResult UploadFile()
         {
             var file = HttpContext.Current.Request.Files.Count > 0 ?
                 HttpContext.Current.Request.Files[0] : null;
@@ -52,7 +52,7 @@ namespace WebGroup.Application.Controllers
                 
             }
              string res = file != null ? "/uploads/" + file.FileName : null;
-            return res;
+            return Json(res);
 
         }
 
